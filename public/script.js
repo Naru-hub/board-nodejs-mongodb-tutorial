@@ -1,6 +1,7 @@
-const formDOM = document.querySelector(".thread-section");
+const threadSectionDOM = document.querySelector(".thread-section");
 const inputTextDOM = document.getElementById("inputTitle");
 const inputContentDOM = document.getElementById("inputContent");
+const formDOM = document.querySelector(".form-section");
 
 let inputText = "";
 let inputContentText = "";
@@ -24,7 +25,7 @@ const getAllThreads = async () => {
       </div>
       `;
     });
-    formDOM.innerHTML = allThreads;
+    threadSectionDOM.innerHTML = allThreads;
   } catch (err) {
     console.log(err);
   }
@@ -40,4 +41,20 @@ inputTextDOM.addEventListener("change", (e) => {
 
 inputContentDOM.addEventListener("change", (e) => {
   inputContentText = e.target.value;
+});
+
+formDOM.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  if (inputText && inputContentText) {
+    console.log("add data");
+    try {
+      await axios.post("/api/v1/thread", {
+        title: inputText,
+        content: inputContentText,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 });

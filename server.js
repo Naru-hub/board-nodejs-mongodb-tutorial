@@ -5,6 +5,7 @@ const PORT = 3000;
 const Thread = require("./models/Thread");
 require("dotenv").config();
 
+app.use(express.json());
 app.use(express.static("public"));
 
 mongoose
