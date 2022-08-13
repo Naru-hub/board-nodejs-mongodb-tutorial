@@ -12,4 +12,4 @@ const ThreadSchema = new mongoose.Schema({
   },
 });
 
-modules.exports = mongoose.model("Thread", ThreadSchema);
+module.exports = mongoose.model("Thread", ThreadSchema);
