@@ -1,4 +1,9 @@
 const formDOM = document.querySelector(".thread-section");
+const inputTextDOM = document.getElementById("inputTitle");
+const inputContentDOM = document.getElementById("inputContent");
+
+let inputText = "";
+let inputContentText = "";
 
 // 最初はThreadのすべてを読み込む
 const getAllThreads = async () => {
@@ -26,3 +31,13 @@ const getAllThreads = async () => {
 };
 
 getAllThreads();
+
+// postメソッド
+inputTextDOM.addEventListener("change", (e) => {
+  inputText = e.target.value;
+  console.log(inputText);
+});
+
+inputContentDOM.addEventListener("change", (e) => {
+  inputContentText = e.target.value;
+});
