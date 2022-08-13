@@ -22,4 +22,14 @@ app.get("/api/v1/threads", async (req, res) => {
   }
 });
 
+// postメソッド
+app.post("/api/v1/thread", async (req, res) => {
+  try {
+    const createThread = await Thread.create(req.body);
+    res.status(200).json(createThread);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 app.listen(PORT, console.log("server running"));
