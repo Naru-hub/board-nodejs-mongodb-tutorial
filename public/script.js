@@ -15,16 +15,18 @@ const getAllThreads = async () => {
     console.log(data);
 
     // 出力
-    allThreads = data.map((thread) => {
-      const { title, content } = thread;
-      console.log(title, content);
-      return `
+    allThreads = data
+      .map((thread) => {
+        const { title, content } = thread;
+        console.log(title, content);
+        return `
       <div class="single-thread">
         <h3>${title}</h3>
         <p>${content}</p>
       </div>
       `;
-    });
+      })
+      .join("");
     threadSectionDOM.innerHTML = allThreads;
   } catch (err) {
     console.log(err);
@@ -53,6 +55,9 @@ formDOM.addEventListener("submit", async (e) => {
         title: inputText,
         content: inputContentText,
       });
+      getAllThreads();
+      inputTextDOM.value = "";
+      inputContentDOM.value = "";
     } catch (err) {
       console.log(err);
     }
